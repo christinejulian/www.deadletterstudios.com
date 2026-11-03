@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dead Letter Studios | Atmospheric Indie Horror Games</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Dead Letter Studios is a solo independent horror game studio crafting dread, psychological terror, and retro VHS survival experiences. Creator of The Last Birthday (1983), Hachishakusama, and Slenderman: Eight Pages.">
+  <meta name="keywords" content="Dead Letter Studios, indie horror games, The Last Birthday 1983, Hachishakusama, itch.io horror, survival horror, psychological horror, VHS horror">
+  <meta name="author" content="Dead Letter Studios">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deadletterstudios.itch.io/">
+  <meta property="og:title" content="Dead Letter Studios | Solo Indie Horror Game Developer">
+  <meta property="og:description" content="Explore haunting indie horror titles built with psychological dread, VHS aesthetics, and spine-chilling soundscapes.">
+  <meta property="og:image" content="https://placehold.co/1200x630/0a0a0c/b91c1c?text=DEAD+LETTER+STUDIOS">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dead Letter Studios | Solo Indie Horror Games">
+  <meta name="twitter:description" content="Unsettling psychological horror, retro survival titles, and interactive urban legends by Dead Letter Studios.">
+  <meta name="twitter:image" content="https://placehold.co/1200x630/0a0a0c/b91c1c?text=DEAD+LETTER+STUDIOS">
+
+  <!-- Google Fonts & Tailwind CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide & FontAwesome Icons for robust cross-support -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['"Share Tech Mono"', 'monospace'],
+          },
+          colors: {
+            horror: {
+              950: '#070709',
+              900: '#0d0d12',
+              850: '#14141c',
+              800: '#1b1b24',
+              blood: '#8a0d0d',
+              bloodLight: '#d21f1f',
+              vhs: '#00ffc8'
+            },
+            blood: '#8a0d0d',
+            crimson: '#b91c1c',
+            surface: '#121219',
+            card: '#161622',
+            mist: '#888899'
+          },
+          animation: {
+            'flicker': 'flicker 3s infinite',
+            'pulse-subtle': 'pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            flicker: {
+              '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': { opacity: '0.99' },
+              '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': { opacity: '0.4' },
+            },
+            pulseSlow: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0.75' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Subtle CRT / VHS scanlines effect */
+    .crt-overlay {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+    }
+
+    .crimson-glow {
+      box-shadow: 0 0 25px rgba(185, 28, 28, 0.2);
+    }
+    .crimson-glow-lg {
+      box-shadow: 0 0 40px rgba(185, 28, 28, 0.35);
+    }
+
+    /* Ambient noise background texture */
+    .vignette {
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.92);
+      pointer-events: none;
+    }
+
+    /* Custom Focus Ring for Accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid #ef4444;
+      outline-offset: 3px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070709;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #272733;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8a0d0d;
+    }
+  </style>
+
+  <!-- Structured Data JSON-LD for Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Dead Letter Studios",
+        "url": "https://deadletterstudios.itch.io/",
+        "logo": "https://placehold.co/400x400/0a0a0c/b91c1c?text=DLS",
+        "sameAs": [
+          "https://deadletterstudios.itch.io/"
+        ],
+        "description": "Solo independent horror game development studio producing psychological, survival, and VHS retro horror games."
+      },
+      {
+        "@type": "VideoGame",
+        "name": "The Last Birthday (1983)",
+        "genre": ["Survival Horror", "Psychological Horror", "Retro VHS"],
+        "gamePlatform": ["PC", "Windows"],
+        "author": {
+          "@type": "Organization",
+          "name": "Dead Letter Studios"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "4.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://deadletterstudios.itch.io/the-last-birthday-1983"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "name": "Hachishakusama: The Summer of Eight Feet Tall",
+        "genre": ["Psychological Horror", "Folklore"],
+        "gamePlatform": ["PC", "Windows"],
+        "author": {
+          "@type": "Organization",
+          "name": "Dead Letter Studios"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "3.99",
+          "priceCurrency": "USD",
+          "url": "https://deadletterstudios.itch.io/hachishakusama"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-[#08080b] text-zinc-300 font-sans min-h-screen relative flex flex-col selection:bg-red-950 selection:text-red-200">
+
+  <!-- Global VHS Scanline Filter Overlay -->
+  <div class="fixed inset-0 crt-overlay z-50"></div>
+  <div class="fixed inset-0 vignette z-40"></div>
+
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-red-800 text-white px-4 py-2 rounded font-medium shadow-xl">
+    Skip to Main Content
+  </a>
+
+  <!-- Top Announcement / Status Bar -->
+  <aside aria-label="Studio Announcement" class="bg-gradient-to-r from-red-950 via-zinc-900 to-red-950 border-b border-red-950/40 text-xs py-1.5 px-4 text-center text-zinc-400 font-mono flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+    <span>LATEST UPDATE: <strong>The Last Birthday (1983)</strong> &amp; <strong>Lost VHS Tape</strong> now live on itch.io</span>
+  </aside>
+
+  <!-- Primary Header & Multi-Page Navigation -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[#08080b]/90 border-b border-zinc-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <button onclick="navigateTo('home')" class="flex items-center gap-3 group text-left" aria-label="Dead Letter Studios Home">
+          <div class="w-10 h-10 rounded-lg bg-red-950/70 border border-red-700/60 flex items-center justify-center text-red-500 group-hover:border-red-500 group-hover:scale-105 transition duration-300">
+            <i data-lucide="skull" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <span class="font-display tracking-[0.2em] font-black text-lg text-zinc-100 group-hover:text-red-400 transition-colors block">DEAD LETTER</span>
+            <span class="font-mono text-[10px] tracking-widest text-zinc-500 uppercase block -mt-1">Solo Indie Horror Studio</span>
+          </div>
+        </button>
+
+        <!-- Desktop Navigation Tabs (Working SPA Router) -->
+        <nav class="hidden md:flex items-center gap-2 text-sm font-medium" aria-label="Main Navigation">
+          <button onclick="navigateTo('home')" data-tab="home" class="nav-tab px-3.5 py-2 rounded-lg text-rose-400 bg-red-950/60 border border-red-800/60 transition-all duration-200">
+            Home
+          </button>
+          <button onclick="navigateTo('games')" data-tab="games" class="nav-tab px-3.5 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-surface border border-transparent transition-all duration-200">
+            Games Vault
+          </button>
+          <button onclick="navigateTo('news')" data-tab="news" class="nav-tab px-3.5 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-surface border border-transparent flex items-center gap-1.5 transition-all duration-200">
+            <span>News &amp; Trailers</span>
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+          </button>
+          <button onclick="navigateTo('about')" data-tab="about" class="nav-tab px-3.5 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-surface border border-transparent transition-all duration-200">
+            The Solo Dev
+          </button>
+          <button onclick="navigateTo('contact')" data-tab="contact" class="nav-tab px-3.5 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-surface border border-transparent transition-all duration-200">
+            Contact &amp; Press
+          </button>
+        </nav>
+
+        <!-- CTA & Quick Links -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="https://deadletterstudios.itch.io/" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-2 bg-red-900/40 hover:bg-red-800 text-red-200 hover:text-white px-4 py-2.5 rounded-lg border border-red-700/50 hover:border-red-500 text-xs font-mono uppercase tracking-wider font-semibold transition-all shadow-lg hover:shadow-red-900/30">
+            <i data-lucide="gamepad-2" class="w-4 h-4 text-red-400"></i>
+            <span>itch.io Catalog</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-70"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" onclick="toggleMobileNav()" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation menu"
+                  class="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none">
+            <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-zinc-800 bg-[#0e0e13]/98 px-4 pt-2 pb-6 space-y-2 font-medium text-sm">
+      <button onclick="navigateTo('home'); toggleMobileNav();" class="w-full text-left py-2 px-3 rounded text-zinc-300 hover:text-red-400 hover:bg-zinc-900">Home</button>
+      <button onclick="navigateTo('games'); toggleMobileNav();" class="w-full text-left py-2 px-3 rounded text-zinc-300 hover:text-red-400 hover:bg-zinc-900">Games Vault</button>
+      <button onclick="navigateTo('news'); toggleMobileNav();" class="w-full text-left py-2 px-3 rounded text-zinc-300 hover:text-red-400 hover:bg-zinc-900 flex items-center justify-between">
+        <span>News &amp; Trailers</span>
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+      </button>
+      <button onclick="navigateTo('about'); toggleMobileNav();" class="w-full text-left py-2 px-3 rounded text-zinc-300 hover:text-red-400 hover:bg-zinc-900">The Solo Dev</button>
+      <button onclick="navigateTo('contact'); toggleMobileNav();" class="w-full text-left py-2 px-3 rounded text-zinc-300 hover:text-red-400 hover:bg-zinc-900">Contact &amp; Press</button>
+      <div class="pt-2">
+        <a href="https://deadletterstudios.itch.io/" target="_blank" rel="noopener noreferrer" 
+           class="w-full flex items-center justify-center gap-2 bg-red-900 hover:bg-red-800 text-white py-2.5 rounded-lg text-xs font-mono uppercase tracking-wider">
+          <i data-lucide="gamepad-2" class="w-4 h-4"></i> Visit itch.io Profile
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="flex-grow">
+
+    <!-- PAGE 1: HOME PAGE -->
+    <div id="page-home" class="page-view">
+      
+      <!-- HERO SECTION -->
+      <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-zinc-800/80 bg-gradient-to-b from-[#08080b] via-[#0d0d14] to-[#08080b] px-4 py-20">
+        <!-- Atmospheric Red Glowing Backdrop -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-red-950/30 rounded-full blur-[130px]"></div>
+          <div class="absolute bottom-10 right-10 w-[300px] h-[300px] bg-red-900/10 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/60 border border-red-800/50 text-red-300 font-mono text-xs tracking-wider uppercase mb-6 animate-pulse-subtle">
+            <i data-lucide="radio" class="w-3.5 h-3.5 text-red-400"></i>
+            <span>Solo Independent Horror Game Studio</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-zinc-100 leading-[1.08] mb-6">
+            UNREFINED <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-rose-400">TERROR</span>. <br>
+            RETRO NIGHTMARES.
+          </h1>
+
+          <!-- Subheadline / Purpose -->
+          <p class="max-w-2xl mx-auto text-zinc-400 text-base sm:text-lg md:text-xl font-normal leading-relaxed mb-10">
+            Crafting raw psychological dread, retro VHS stalker survival, and Japanese urban legends. Every atmosphere, sound cue, and nightmare built entirely by a dedicated solo indie developer.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="navigateTo('games')" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-red-700 hover:bg-red-600 text-white font-semibold text-sm uppercase tracking-wider transition-all duration-300 shadow-xl shadow-red-900/30 hover:scale-[1.02]">
+              <i data-lucide="gamepad-2" class="w-5 h-5"></i>
+              <span>Explore Game Catalog</span>
+            </button>
+            <button onclick="navigateTo('news')" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 border border-zinc-700/60 font-semibold text-sm tracking-wider uppercase transition-all duration-300 hover:border-zinc-500">
+              <i data-lucide="play" class="w-4 h-4 text-red-500"></i>
+              <span>Watch New Trailer</span>
+            </button>
+          </div>
+
+          <!-- Metric / Trust bar -->
+          <div class="mt-16 pt-8 border-t border-zinc-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-center max-w-3xl mx-auto">
+            <div>
+              <div class="font-mono text-2xl font-bold text-red-400">12+</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Released Projects</div>
+            </div>
+            <div>
+              <div class="font-mono text-2xl font-bold text-zinc-200">100%</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Solo Developed</div>
+            </div>
+            <div>
+              <div class="font-mono text-2xl font-bold text-red-400">VHS &amp; 3D</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Horror Aesthetics</div>
+            </div>
+            <div>
+              <div class="font-mono text-2xl font-bold text-zinc-200">itch.io</div>
+              <div class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Direct Catalog</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED FLAGSHIP SPOTLIGHT (The Last Birthday 1983) -->
+      <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-zinc-800/60">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-mono uppercase text-red-500 tracking-widest block mb-2">Spotlight Showcase</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white tracking-wide">THE LAST BIRTHDAY (1983)</h2>
+          <p class="text-zinc-400 text-sm mt-3">Some birthdays should never be remembered. Experience the flagship stalker AI horror simulator.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-zinc-900/50 border border-zinc-800/80 rounded-2xl p-6 sm:p-8 lg:p-10 backdrop-blur-sm">
+          
+          <!-- Showcase Artwork Simulation -->
+          <div class="lg:col-span-7 relative group overflow-hidden rounded-xl border border-red-900/40 bg-zinc-950 aspect-video flex items-center justify-center">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-zinc-950/80 to-transparent z-10"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-20">
+              <span class="font-mono text-red-500 text-xs tracking-widest mb-2">[REC ● PORT HALLOWAY 1983]</span>
+              <h3 class="font-display text-3xl sm:text-5xl font-black text-red-500 tracking-wider drop-shadow-md">THE LAST BIRTHDAY</h3>
+              <span class="font-mono text-xs text-zinc-400 mt-1 tracking-widest">(1983)</span>
+              <div class="mt-4 flex gap-2">
+                <span class="bg-red-950/90 text-red-300 text-xs px-2.5 py-1 rounded font-mono border border-red-800">VHS Stalker Horror</span>
+                <span class="bg-zinc-800/90 text-zinc-300 text-xs px-2.5 py-1 rounded font-mono">Survival AI</span>
+              </div>
+            </div>
+            <div class="absolute -top-12 -left-12 w-64 h-64 bg-red-600/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-red-900/20 rounded-full blur-3xl pointer-events-none"></div>
+          </div>
+
+          <!-- Game Pitch Details -->
+          <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-red-600/20 text-red-400 border border-red-500/30">$4.99 USD</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-zinc-800 text-zinc-400">Windows PC</span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-white mb-2">Survive Port Halloway</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+                Enter the abandoned 1980s family diner. Navigate cramped service corridors, solve power restoration puzzles, and evade the sentient animatronic hare that responds dynamically to audio footsteps and flashlight beams.
+              </p>
+              <ul class="text-xs text-zinc-400 space-y-2 font-mono">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500"></i> Authentic retro VHS tracking &amp; PSX aesthetic</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500"></i> Dynamic acoustic AI stalker mechanics</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500"></i> Playable browser prologue tape available</li>
+              </ul>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <a href="https://deadletterstudios.itch.io/the-last-birthday-1983" target="_blank" rel="noopener noreferrer"
+                 class="flex-1 inline-flex items-center justify-center gap-2 bg-red-700 hover:bg-red-600 text-white py-3 px-4 rounded-xl text-xs font-mono uppercase font-bold tracking-wider transition">
+                <i data-lucide="shopping-cart" class="w-4 h-4"></i> Get on itch.io ($4.99)
+              </a>
+              <button onclick="navigateTo('news')" class="inline-flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 py-3 px-4 rounded-xl text-xs font-mono tracking-wider transition">
+                <i data-lucide="film" class="w-4 h-4 text-red-400"></i> Watch Sequel Trailer
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quick Highlights from Community -->
+      <section class="py-16 bg-[#0c0c11] border-b border-zinc-800/60">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h3 class="text-2xl font-display font-bold text-white mb-8">What Horror Enthusiasts Say</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div class="p-5 rounded-xl bg-surface border border-red-950">
+              <div class="text-amber-400 text-xs mb-2"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+              <p class="text-xs text-gray-300 italic">"The Last Birthday 1983 nails the terrifying dread of VHS horror and 80s animatronic lore."</p>
+              <div class="mt-3 text-[11px] text-gray-500 font-semibold">— Port Halloway Fan</div>
+            </div>
+            <div class="p-5 rounded-xl bg-surface border border-red-950">
+              <div class="text-amber-400 text-xs mb-2"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+              <p class="text-xs text-gray-300 italic">"Hachishakusama's sound design is haunting. That distinct 'Po... Po... Po...' is unforgettable."</p>
+              <div class="mt-3 text-[11px] text-gray-500 font-semibold">— J-Horror Aficionado</div>
+            </div>
+            <div class="p-5 rounded-xl bg-surface border border-red-950">
+              <div class="text-amber-400 text-xs mb-2"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+              <p class="text-xs text-gray-300 italic">"Incredible pace of development from a dedicated solo indie creator. Great itch.io catalog."</p>
+              <div class="mt-3 text-[11px] text-gray-500 font-semibold">— Indie Reviewer</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+
+    <!-- PAGE 2: GAMES CATALOG PAGE -->
+    <div id="page-games" class="page-view hidden">
+      <section class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Header -->
+          <div class="text-center max-w-3xl mx-auto mb-10">
+            <div class="text-xs font-semibold text-rose-500 uppercase tracking-widest mb-2 font-mono">Dead Letter Studios Library</div>
+            <h1 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight uppercase">
+              Full Game Catalog
+            </h1>
+            <div class="w-16 h-1 bg-red-700 mx-auto my-4 rounded-full"></div>
+            <p class="text-gray-400 text-sm sm:text-base">
+              Explore all released survival horror games, creepypasta adaptations, visual novels, and experimental prototypes directly from itch.io.
+            </p>
+          </div>
+
+          <!-- Filters & Search Toolbar -->
+          <div class="bg-card/80 border border-red-950/80 rounded-2xl p-4 sm:p-6 mb-10 backdrop-blur">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+              
+              <!-- Search bar -->
+              <div class="relative w-full lg:w-96">
+                <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <i data-lucide="search" class="w-4 h-4"></i>
+                </span>
+                <input 
+                  type="text" 
+                  id="searchInput" 
+                  oninput="filterGames()" 
+                  placeholder="Search titles (e.g. Birthday, Slenderman, Hachishaku)..." 
+                  class="w-full pl-10 pr-10 py-2.5 bg-surface border border-red-950 focus:border-red-600 focus:ring-1 focus:ring-red-600 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition"
+                >
+                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white">
+                  <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+              <!-- Genre / Tag Pills -->
+              <div class="flex flex-wrap items-center justify-center gap-2 w-full lg:w-auto" id="genreFilters">
+                <button onclick="setFilter('all', this)" class="genre-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition bg-red-700 text-white font-mono">
+                  All Games (12)
+                </button>
+                <button onclick="setFilter('Survival', this)" class="genre-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition bg-surface hover:bg-card border border-red-950 text-gray-300 hover:text-white font-mono">
+                  Survival Horror
+                </button>
+                <button onclick="setFilter('Visual Novel', this)" class="genre-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition bg-surface hover:bg-card border border-red-950 text-gray-300 hover:text-white font-mono">
+                  Visual Novels
+                </button>
+                <button onclick="setFilter('Browser', this)" class="genre-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition bg-surface hover:bg-card border border-red-950 text-gray-300 hover:text-white font-mono">
+                  Play In Browser
+                </button>
+                <button onclick="setFilter('Paid', this)" class="genre-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition bg-surface hover:bg-card border border-red-950 text-gray-300 hover:text-white font-mono">
+                  Premium
+                </button>
+                <button onclick="setFilter('Free', this)" class="genre-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition bg-surface hover:bg-card border border-red-950 text-gray-300 hover:text-white font-mono">
+                  Free / Demo
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Games Grid -->
+          <div id="gamesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Dynamically populated via JavaScript -->
+          </div>
+
+          <!-- No Results Fallback -->
+          <div id="noResults" class="hidden text-center py-20 bg-card/30 border border-red-950/60 rounded-2xl">
+            <i data-lucide="ghost" class="w-12 h-12 mx-auto text-red-600 mb-4 animate-bounce"></i>
+            <h3 class="text-xl font-bold text-white font-display">No Nightmares Found</h3>
+            <p class="text-sm text-zinc-400 mt-1">Try adjusting your search criteria or clearing your filters.</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-md bg-red-700 text-white text-xs uppercase font-semibold font-mono">
+              Reset Filters
+            </button>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!-- PAGE 3: NEWS & TRAILERS PAGE (Spotlighting Announcement Trailer) -->
+    <div id="page-news" class="page-view hidden">
+      <section class="py-16 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 bg-red-950/80 border border-red-700/60 rounded-full text-rose-400 text-xs font-semibold uppercase tracking-wider mb-3 font-mono">
+              <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+              <span>Official Transmission &amp; Devlog</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight uppercase">
+              News &amp; Trailers
+            </h1>
+            <div class="w-16 h-1 bg-red-700 mx-auto my-4 rounded-full"></div>
+            <p class="text-gray-400 text-sm sm:text-base">
+              Latest reveal trailers, production announcements, patch notes, and behind-the-scenes devlogs.
+            </p>
+          </div>
+
+          <!-- MAJOR SPOTLIGHT: Announcement Trailer -->
+          <article class="bg-gradient-to-b from-card via-surface to-black border-2 border-red-900 rounded-3xl p-6 sm:p-10 crimson-glow-lg mb-16">
+            
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-red-950 pb-4 mb-6">
+              <div class="flex items-center space-x-2">
+                <span class="px-3 py-1 bg-red-800 text-white text-xs font-black uppercase tracking-wider rounded font-mono">WORLD PREMIERE</span>
+                <span class="text-xs text-rose-400 font-mono">OFFICIAL ANNOUNCEMENT TRAILER</span>
+              </div>
+              <div class="text-xs text-gray-500 font-mono flex items-center gap-1.5">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> DEAD LETTER DISPATCH #01
+              </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-display font-extrabold text-white leading-tight mb-4">
+              THE LAST BIRTHDAY II: THE THINGS WE BURIED — Official Reveal Trailer
+            </h2>
+
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8">
+              The nightmare returns deeper, colder, and more unforgiving. Watch the official announcement trailer for the highly anticipated sequel to <em>The Last Birthday (1983)</em>. Unearth the secrets buried beneath Port Halloway.
+            </p>
+
+            <!-- Responsive 16:9 YouTube Embed Container -->
+            <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-red-800 shadow-2xl bg-black mb-8 group">
+              <iframe 
+                class="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/Q-I7vQcrBMs" 
+                title="The Last Birthday II: The Things We Buried - Announcement Trailer" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <!-- Trailer Details & Dev Breakdown -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-surface/70 border border-red-950 p-6 rounded-xl">
+              <div>
+                <h4 class="text-xs uppercase font-bold text-rose-400 tracking-wider mb-2 flex items-center space-x-1.5 font-mono">
+                  <i data-lucide="video" class="w-4 h-4"></i>
+                  <span>Trailer Synopsis</span>
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                  First look at the expanded underground sectors of the facility, updated animatronic AI mechanics, new acoustic detection systems, and darker psychological narrative sequences.
+                </p>
+              </div>
+
+              <div>
+                <h4 class="text-xs uppercase font-bold text-rose-400 tracking-wider mb-2 flex items-center space-x-1.5 font-mono">
+                  <i data-lucide="cpu" class="w-4 h-4"></i>
+                  <span>Engine &amp; Visuals</span>
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                  Crafted with enhanced volumetric fog, authentic retro PSX dithering filters, dynamic CRT scanlines, and 3D spatialized audio design.
+                </p>
+              </div>
+
+              <div>
+                <h4 class="text-xs uppercase font-bold text-rose-400 tracking-wider mb-2 flex items-center space-x-1.5 font-mono">
+                  <i data-lucide="bell" class="w-4 h-4"></i>
+                  <span>Follow &amp; Wishlist</span>
+                </h4>
+                <p class="text-xs text-gray-400 leading-relaxed mb-3">
+                  Stay updated on itch.io for the first playable demo drops and development logs.
+                </p>
+                <a href="https://deadletterstudios.itch.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs font-bold text-rose-400 hover:text-white font-mono">
+                  <span>Follow on itch.io</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+          </article>
+
+          <!-- Additional Dev Logs / Updates -->
+          <div class="space-y-6">
+            <h3 class="text-xl font-display font-bold text-white uppercase tracking-wider mb-6">Archive Dispatches</h3>
+            
+            <div class="p-6 rounded-2xl bg-card border border-red-950 hover:border-red-800 transition">
+              <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+                <span class="text-rose-400 font-mono font-semibold">PATCH &amp; WEB UPDATE</span>
+                <span class="font-mono">Port Halloway Archive</span>
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">The Last Birthday: Lost VHS Tape Receives WebGL Enhancements</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                Players can now experience the prologue tape directly inside modern desktop and mobile browsers with improved framerates, touch controls, and reduced memory footprint.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-card border border-red-950 hover:border-red-800 transition">
+              <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+                <span class="text-rose-400 font-mono font-semibold">DEV NOTE</span>
+                <span class="font-mono">Lore Expansion</span>
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">Japanese Urban Horror Series: Hachishakusama Status</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                Thank you for the tremendous support on the release of Hachishakusama: The Summer of Eight Feet Tall. More folklore-inspired horror is currently under active pre-production.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!-- PAGE 4: ABOUT THE DEVELOPER PAGE -->
+    <div id="page-about" class="page-view hidden">
+      <section class="py-16 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="text-xs font-semibold text-rose-500 uppercase tracking-widest mb-2 font-mono">Behind The Dread</div>
+            <h1 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight uppercase">
+              About Dead Letter Studios
+            </h1>
+            <div class="w-16 h-1 bg-red-700 mx-auto my-4 rounded-full"></div>
+            <p class="text-gray-400 text-sm sm:text-base">
+              A solo indie journey dedicated to classic survival horror, internet folklore, and analog psychological terror.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+            
+            <div class="lg:col-span-7 space-y-6">
+              <h2 class="text-2xl sm:text-3xl font-display font-bold text-white leading-snug">
+                One Developer. Unfiltered Nightmares.
+              </h2>
+
+              <p class="text-gray-300 text-sm leading-relaxed">
+                Dead Letter Studios is run entirely by a <strong>solo independent game developer</strong> passionate about recapturing the raw, unpolished, and intensely unsettling nature of retro survival horror.
+              </p>
+
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Named after letters that can never be delivered, every game is a love letter to the late-90s golden age of horror—from the static-choked halls of PSX survival classics to modern creepypasta mythologies like Slenderman and Japanese folklore icons like Hachishakusama.
+              </p>
+
+              <div class="p-4 rounded-xl bg-card border-l-4 border-red-700 text-sm text-gray-200 italic font-serif">
+                "Dare to dream, to innovate, and to create a future where the only limit is the extent of our imagination."
+              </div>
+
+              <div class="pt-2 flex flex-wrap gap-3 font-mono text-xs">
+                <span class="px-3 py-1 bg-surface border border-red-950 text-gray-300 rounded-full flex items-center gap-1.5">
+                  <i data-lucide="code" class="w-3.5 h-3.5 text-rose-500"></i> Solo Programming
+                </span>
+                <span class="px-3 py-1 bg-surface border border-red-950 text-gray-300 rounded-full flex items-center gap-1.5">
+                  <i data-lucide="palette" class="w-3.5 h-3.5 text-rose-500"></i> Retro 3D Modeling
+                </span>
+                <span class="px-3 py-1 bg-surface border border-red-950 text-gray-300 rounded-full flex items-center gap-1.5">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5 text-rose-500"></i> Eerie Soundscapes
+                </span>
+                <span class="px-3 py-1 bg-surface border border-red-950 text-gray-300 rounded-full flex items-center gap-1.5">
+                  <i data-lucide="gamepad-2" class="w-3.5 h-3.5 text-rose-500"></i> itch.io Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div class="bg-card border border-red-900 rounded-2xl p-6 crimson-glow">
+                <h3 class="text-lg font-bold text-white mb-4 border-b border-red-950 pb-2 font-display">Studio Identity</h3>
+                <dl class="space-y-4 text-xs font-mono">
+                  <div>
+                    <dt class="text-gray-500 uppercase">Creator</dt>
+                    <dd class="text-white font-bold text-sm">Dead Letter Studios (Solo Dev)</dd>
+                  </div>
+                  <div>
+                    <dt class="text-gray-500 uppercase">Specialization</dt>
+                    <dd class="text-white">Survival Horror, PSX Aesthetic, Analog VHS, Visual Novels</dd>
+                  </div>
+                  <div>
+                    <dt class="text-gray-500 uppercase">Flagship Series</dt>
+                    <dd class="text-rose-400 font-bold">The Last Birthday (1983) Universe</dd>
+                  </div>
+                  <div>
+                    <dt class="text-gray-500 uppercase">Primary Distribution</dt>
+                    <dd class="text-white">
+                      <a href="https://deadletterstudios.itch.io/" target="_blank" rel="noopener noreferrer" class="text-rose-400 underline">deadletterstudios.itch.io</a>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Studio Principles -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-2xl bg-card border border-red-950">
+              <i data-lucide="cassette-tape" class="w-6 h-6 text-red-500 mb-3"></i>
+              <h4 class="text-base font-bold text-white mb-2">Authentic Analog Feel</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                Faithful CRT distortion, audio wow/flutter, and lighting designed to trigger nostalgic unease.
+              </p>
+            </div>
+            <div class="p-6 rounded-2xl bg-card border border-red-950">
+              <i data-lucide="brain" class="w-6 h-6 text-red-500 mb-3"></i>
+              <h4 class="text-base font-bold text-white mb-2">Psychological Tension</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                Prioritizing anticipation and auditory dread over cheap jump scares to keep players constantly on edge.
+              </p>
+            </div>
+            <div class="p-6 rounded-2xl bg-card border border-red-950">
+              <i data-lucide="radio" class="w-6 h-6 text-red-500 mb-3"></i>
+              <h4 class="text-base font-bold text-white mb-2">Streamer &amp; Community Friendly</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                100% safe for Twitch/YouTube streamers with instant review keys and open monetization policies.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!-- PAGE 5: CONTACT & PRESS PAGE -->
+    <div id="page-contact" class="page-view hidden">
+      <section class="py-16 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="text-xs font-semibold text-rose-500 uppercase tracking-widest mb-2 font-mono">Transmissions &amp; Inquiries</div>
+            <h1 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight uppercase">
+              Contact &amp; Press
+            </h1>
+            <div class="w-16 h-1 bg-red-700 mx-auto my-4 rounded-full"></div>
+            <p class="text-gray-400 text-sm">
+              Request review copy keys for your YouTube/Twitch channel, report bugs, or submit business inquiries directly to the solo developer.
+            </p>
+          </div>
+
+          <div class="bg-card border border-red-900 rounded-3xl p-6 sm:p-10 crimson-glow mb-12">
+            
+            <form id="contactFormDedicated" onsubmit="handleContactSubmit(event)" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2 font-mono">Your Name / Channel</label>
+                  <input type="text" required class="w-full px-4 py-3 bg-surface border border-red-950 focus:border-red-600 rounded-xl text-sm text-white outline-none transition" placeholder="e.g. Mark / MidnightPlay">
+                </div>
+                <div>
+                  <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2 font-mono">Email Address</label>
+                  <input type="email" required class="w-full px-4 py-3 bg-surface border border-red-950 focus:border-red-600 rounded-xl text-sm text-white outline-none transition" placeholder="creator@example.com">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2 font-mono">Inquiry Type</label>
+                <select class="w-full px-4 py-3 bg-surface border border-red-950 focus:border-red-600 rounded-xl text-sm text-white outline-none transition font-sans">
+                  <option>Press / Content Creator Review Key (YouTube, Twitch, TikTok)</option>
+                  <option>Bug Report / Technical Support</option>
+                  <option>Feedback / Game Idea</option>
+                  <option>General Business / Publishing Opportunity</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2 font-mono">Channel URL / Website (Optional)</label>
+                <input type="url" class="w-full px-4 py-3 bg-surface border border-red-950 focus:border-red-600 rounded-xl text-sm text-white outline-none transition" placeholder="https://youtube.com/@yourchannel">
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2 font-mono">Message</label>
+                <textarea rows="5" required class="w-full px-4 py-3 bg-surface border border-red-950 focus:border-red-600 rounded-xl text-sm text-white outline-none transition" placeholder="Include any details regarding your coverage, platform requirements, or bug reproduction steps..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 bg-red-700 hover:bg-red-600 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition duration-300 crimson-glow flex items-center justify-center space-x-2 font-mono">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Send Dispatch to Developer</span>
+              </button>
+            </form>
+
+          </div>
+
+          <!-- Creator Guidelines Note -->
+          <div class="p-6 rounded-2xl bg-surface border border-red-950 text-xs text-gray-400 space-y-2">
+            <h4 class="text-sm font-bold text-white mb-2 flex items-center space-x-2">
+              <i data-lucide="shield-check" class="w-4 h-4 text-rose-500"></i>
+              <span>Content Creator &amp; Streaming Policy</span>
+            </h4>
+            <p>You have full, unconditional permission to monetize videos, streams, and Let's Plays featuring Dead Letter Studios titles. No copyright strikes will ever be issued.</p>
+            <p>Please kindly mention and link to <a href="https://deadletterstudios.itch.io/" class="text-rose-400 underline" target="_blank" rel="noopener noreferrer">deadletterstudios.itch.io</a> so your audience can discover and support the games.</p>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- FOOTER & LEGAL -->
+  <footer class="bg-[#050507] border-t border-zinc-800/80 text-zinc-500 text-xs pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-2 space-y-3">
+          <div class="flex items-center gap-2">
+            <i data-lucide="skull" class="w-4 h-4 text-red-500"></i>
+            <span class="font-display font-bold text-sm tracking-wider text-zinc-200">DEAD LETTER STUDIOS</span>
+          </div>
+          <p class="text-zinc-400 text-xs max-w-sm leading-relaxed">
+            Independent horror game developer dedicated to crafting immersive tension, visceral soundscapes, and unsettling survival experiences.
+          </p>
+          <div class="text-[11px] font-mono text-zinc-600">
+            Powered by independent passion. No trackers. SSL Protected.
+          </div>
+        </div>
+        <!-- Col 2: Navigation Links -->
+        <div>
+          <h4 class="text-white font-semibold uppercase tracking-wider text-xs mb-3">Studio Pages</h4>
+          <ul class="space-y-2">
+            <li><button onclick="navigateTo('home')" class="hover:text-rose-400 transition">Home</button></li>
+            <li><button onclick="navigateTo('games')" class="hover:text-rose-400 transition">Game Catalog</button></li>
+            <li><button onclick="navigateTo('news')" class="hover:text-rose-400 transition">News & Trailers</button></li>
+            <li><button onclick="navigateTo('about')" class="hover:text-rose-400 transition">About the Solo Dev</button></li>
+            <li><button onclick="navigateTo('contact')" class="hover:text-rose-400 transition">Contact & Press Keys</button></li>
+          </ul>
+        </div>
+
+        <!-- Trust & Policies -->
+        <div>
+          <span class="font-mono text-zinc-200 uppercase tracking-wider block mb-3 text-xs font-semibold">Trust &amp; Legal</span>
+          <ul class="space-y-1.5 text-xs">
+            <li><button type="button" onclick="openModal('privacyModal')" class="hover:text-red-400 transition-colors text-left">Privacy Policy</button></li>
+            <li><button type="button" onclick="openModal('termsModal')" class="hover:text-red-400 transition-colors text-left">Terms of Use</button></li>
+            <li><button type="button" onclick="openModal('supportModal')" class="hover:text-red-400 transition-colors text-left">Refund &amp; Support Policy</button></li>
+            <li><a href="https://itch.io/support" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors">itch.io Buyer Protection</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono">
+        <div>
+          &copy; <span id="year">2026</span> Dead Letter Studios. All rights reserved. Games hosted on itch.io.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://deadletterstudios.itch.io/" target="_blank" rel="noopener noreferrer" class="hover:text-red-400">itch.io Studio Page</a>
+          <span>•</span>
+          <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="hover:text-red-400">Back to Top ↑</button>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ACCESSIBLE MODALS (Privacy, Terms, Support) -->
+  
+  <!-- Privacy Modal -->
+  <div id="privacyModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="bg-zinc-900 border border-zinc-700 max-w-xl w-full p-6 rounded-2xl shadow-2xl relative text-left">
+      <h3 id="privacyTitle" class="font-display text-xl font-bold text-white mb-3">Privacy Disclosure</h3>
+      <div class="text-xs text-zinc-300 space-y-3 font-normal max-h-96 overflow-y-auto pr-2 leading-relaxed">
+        <p><strong>1. Data Collection:</strong> Dead Letter Studios does not collect, harvest, or sell personal identifiers on this portfolio website. We do not operate third-party tracking pixels or invasive advertising cookies.</p>
+        <p><strong>2. Itch.io Transactions:</strong> All game purchases, transactions, and downloads occur on <a href="https://itch.io" class="text-red-400 underline">itch.io</a> and are governed by itch.io’s terms and security safeguards.</p>
+        <p><strong>3. Communications:</strong> If you submit a query via the contact form, your email is used solely to respond to your technical question or feedback.</p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button type="button" onclick="closeModal('privacyModal')" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs font-mono">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms Modal -->
+  <div id="termsModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <div class="bg-zinc-900 border border-zinc-700 max-w-xl w-full p-6 rounded-2xl shadow-2xl relative text-left">
+      <h3 id="termsTitle" class="font-display text-xl font-bold text-white mb-3">Terms of Use</h3>
+      <div class="text-xs text-zinc-300 space-y-3 font-normal max-h-96 overflow-y-auto pr-2 leading-relaxed">
+        <p><strong>Content &amp; IP:</strong> All artwork, logos, sound effects, characters, and code created for titles such as <em>The Last Birthday (1983)</em>, <em>Hachishakusama</em>, and associated Dead Letter Studios games are protected intellectual property.</p>
+        <p><strong>Content Creator Policy:</strong> Gameplay footage, streaming, and reviews on YouTube, Twitch, and social platforms are expressly permitted and encouraged. Monetized playthroughs are welcome!</p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button type="button" onclick="closeModal('termsModal')" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs font-mono">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Support Modal -->
+  <div id="supportModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="supportTitle">
+    <div class="bg-zinc-900 border border-zinc-700 max-w-xl w-full p-6 rounded-2xl shadow-2xl relative text-left">
+      <h3 id="supportTitle" class="font-display text-xl font-bold text-white mb-3">Support &amp; Refunds Policy</h3>
+      <div class="text-xs text-zinc-300 space-y-3 font-normal max-h-96 overflow-y-auto pr-2 leading-relaxed">
+        <p><strong>itch.io Purchasing Guarantee:</strong> Games acquired via itch.io can be re-downloaded at any time DRM-free. If a title does not perform on your hardware configuration, please visit <a href="https://itch.io/support" class="text-red-400 underline">itch.io Support</a> for direct refund handling.</p>
+        <p><strong>Solo Bug Resolution:</strong> Bug reports sent through the contact form are addressed directly by the developer in periodic patch updates.</p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button type="button" onclick="closeModal('supportModal')" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs font-mono">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Non-intrusive Cookie / Transparency Banner -->
+  <div id="cookieNotice" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:max-w-md z-50 p-4 rounded-xl bg-zinc-900 border border-zinc-700 text-xs shadow-2xl flex flex-col gap-3">
+    <div class="flex items-start gap-2.5">
+      <i data-lucide="shield" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+      <p class="text-zinc-300 leading-relaxed">
+        We prioritize privacy. This studio site uses no tracking or advertising cookies. Enjoy the games without corporate data harvesting.
+      </p>
+    </div>
+    <div class="flex justify-end gap-2">
+      <button type="button" onclick="dismissCookie()" class="px-3.5 py-1.5 bg-red-800 hover:bg-red-700 text-white rounded font-mono text-[11px] font-semibold transition">
+        Acknowledge
+      </button>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Audio synthesizer for atmospheric UI navigation
+    let audioCtx = null;
+    function playHorrorBlip() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        if (!audioCtx) {
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(110, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(45, audioCtx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.13);
+      } catch (e) {
+        // Fallback silently if autoplay audio permissions are restricted
+      }
+    }
+
+    // Comprehensive Games Catalog Database
+    const GAMES_DATA = [
+      {
+        id: "the-last-birthday-1983",
+        title: "The Last Birthday 1983",
+        tagline: "Some birthdays should never be remembered.",
+        genre: "Survival",
+        price: "$4.99",
+        isPaid: true,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/the-last-birthday-1983",
+        badge: "Flagship",
+        badgeColor: "bg-red-900/80 border-red-600 text-red-300",
+        description: "Explore the shuttered Port Halloway family entertainment center. Stalked by a decaying animatronic hare with acoustic AI."
+      },
+      {
+        id: "the-last-birthday-lost-vhs",
+        title: "The Last Birthday: Lost VHS Tape",
+        tagline: "A lost VHS recording from Port Halloway. Some parties never end.",
+        genre: "Survival",
+        price: "Free",
+        isPaid: false,
+        isBrowser: true,
+        platform: "Browser & Windows",
+        url: "https://deadletterstudios.itch.io/the-last-birthday-1983",
+        badge: "Play In Browser",
+        badgeColor: "bg-emerald-950/80 border-emerald-600 text-emerald-300",
+        description: "The browser-playable prologue tape. Uncover what really happened in the employee back-tunnels before the shutdown."
+      },
+      {
+        id: "hachishakusama",
+        title: "Hachishakusama: The Summer of Eight Feet Tall",
+        tagline: "Po... Po... Po... She has chosen you.",
+        genre: "Survival",
+        price: "$3.99",
+        isPaid: true,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/hachishakusama",
+        badge: "J-Horror",
+        badgeColor: "bg-purple-950/80 border-purple-600 text-purple-300",
+        description: "Survive in rural isolation against the legendary eight-foot-tall Japanese entity. Acoustic paranoia and shrine warding."
+      },
+      {
+        id: "slenderman-eight-pages",
+        title: "SLENDERMAN: EIGHT PAGES",
+        tagline: "The woods never sleep. Keep your flashlight close.",
+        genre: "Visual Novel",
+        price: "Free",
+        isPaid: false,
+        isBrowser: false,
+        platform: "Windows & Mac",
+        url: "https://deadletterstudios.itch.io/slenderman-eight-pages",
+        badge: "Creepypasta",
+        badgeColor: "bg-zinc-800 border-zinc-600 text-zinc-300",
+        description: "A psychological visual novel & survival adaptation reimagining the legendary nocturnal search across the misty forest."
+      },
+      {
+        id: "go-to-sleep",
+        title: "GO TO SLEEP",
+        tagline: "A bloody smile in the dark. Don't look behind the bedroom door.",
+        genre: "Visual Novel",
+        price: "Free",
+        isPaid: false,
+        isBrowser: true,
+        platform: "Browser & Windows",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Play In Browser",
+        badgeColor: "bg-emerald-950/80 border-emerald-600 text-emerald-300",
+        description: "Tense interactive narrative centered around urban legend terror and late-night claustrophobia."
+      },
+      {
+        id: "amityville-survival",
+        title: "Amityville: Survival",
+        tagline: "Some places were never meant to be entered.",
+        genre: "Survival",
+        price: "$1.99",
+        isPaid: true,
+        isBrowser: false,
+        platform: "Windows & Mac",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Survival",
+        badgeColor: "bg-red-950/80 border-red-700 text-red-300",
+        description: "Once you step inside, the morgue remembers you. Classic inventory management, resource scarcity, and creeping dread."
+      },
+      {
+        id: "school-days",
+        title: "School Days V1.3.7",
+        tagline: "The school bell hasn't rung in 30 years... but class is in session.",
+        genre: "Survival",
+        price: "$1.99",
+        isPaid: true,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Retro PSX",
+        badgeColor: "bg-amber-950/80 border-amber-600 text-amber-300",
+        description: "Trapped in an abandoned hallway maze where lockers rattle and footsteps follow from around dark corners."
+      },
+      {
+        id: "be-my-valentine",
+        title: "BE MY VALENTINE",
+        tagline: "Dare to play... if you think you can survive.",
+        genre: "Survival",
+        price: "$3.99",
+        isPaid: true,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Psychological",
+        badgeColor: "bg-rose-950/80 border-rose-600 text-rose-300",
+        description: "A twisted stalker horror experience exploring obsession, analog tape decryption, and frantic hide-and-seek."
+      },
+      {
+        id: "90-hours",
+        title: "90 Hours",
+        tagline: "90 hours to escape. Or eternity to suffer.",
+        genre: "Survival",
+        price: "Free",
+        isPaid: false,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Countdown",
+        badgeColor: "bg-zinc-800 border-zinc-600 text-zinc-300",
+        description: "A ticking-clock survival horror experiment where every decision, door opened, and candle lit burns precious hours."
+      },
+      {
+        id: "the-silent-watcher",
+        title: "The Silent Watcher",
+        tagline: "It stands beyond the pines. It does not blink.",
+        genre: "Survival",
+        price: "$1.99",
+        isPaid: true,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Folk Terror",
+        badgeColor: "bg-cyan-950/80 border-cyan-700 text-cyan-300",
+        description: "Wendigo-inspired forest exploration. Track signals, keep camp generators fueled, and survive until sunrise."
+      },
+      {
+        id: "the-valley-of-the-unknown",
+        title: "The Valley of the Unknown",
+        tagline: "Desolation, skull markers, and ancient rituals.",
+        genre: "Survival",
+        price: "Free",
+        isPaid: false,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Exploration",
+        badgeColor: "bg-stone-900 border-stone-600 text-stone-300",
+        description: "An atmospheric exploration into a forsaken excavation site where forgotten burial tombs were breached."
+      },
+      {
+        id: "merge-n-run",
+        title: "Merge'N'Run",
+        tagline: "Roll, Merge & Smash! Experimental indie arcade.",
+        genre: "Arcade",
+        price: "Free",
+        isPaid: false,
+        isBrowser: false,
+        platform: "Windows",
+        url: "https://deadletterstudios.itch.io/",
+        badge: "Arcade Prototype",
+        badgeColor: "bg-blue-950/80 border-blue-600 text-blue-300",
+        description: "A fast-paced mechanical physics experiment built during an indie game development sprint."
+      }
+    ];
+
+    let currentGenreFilter = 'all';
+
+    // Render games catalog
+    function renderGames() {
+      const grid = document.getElementById('gamesGrid');
+      const noResults = document.getElementById('noResults');
+      const searchInput = document.getElementById('searchInput');
+      const searchQuery = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+      if (!grid) return;
+
+      const filtered = GAMES_DATA.filter(game => {
+        // Tag / Genre filter
+        let matchesGenre = true;
+        if (currentGenreFilter === 'Survival') matchesGenre = game.genre === 'Survival';
+        else if (currentGenreFilter === 'Visual Novel') matchesGenre = game.genre === 'Visual Novel';
+        else if (currentGenreFilter === 'Browser') matchesGenre = game.isBrowser === true;
+        else if (currentGenreFilter === 'Paid') matchesGenre = game.isPaid === true;
+        else if (currentGenreFilter === 'Free') matchesGenre = game.isPaid === false;
+
+        // Search text filter
+        const matchesSearch = !searchQuery || 
+          game.title.toLowerCase().includes(searchQuery) || 
+          game.tagline.toLowerCase().includes(searchQuery) ||
+          game.description.toLowerCase().includes(searchQuery) ||
+          game.genre.toLowerCase().includes(searchQuery);
+
+        return matchesGenre && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (noResults) noResults.classList.remove('hidden');
+        return;
+      }
+
+      if (noResults) noResults.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(game => `
+        <article class="bg-[#101017] border border-red-950/80 rounded-2xl overflow-hidden hover:border-red-600/70 transition-all duration-300 flex flex-col group hover:-translate-y-1 shadow-lg hover:shadow-red-950/50">
+          
+          <!-- Game Artwork Mockup Header -->
+          <div class="relative aspect-video bg-zinc-950 border-b border-red-950/60 overflow-hidden flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#101017] via-transparent to-black/60 z-10"></div>
+            
+            <!-- Graphic background placeholder styled specifically for each title -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(185,28,28,0.25)_0%,rgba(0,0,0,0.95)_100%)] group-hover:scale-105 transition-transform duration-500"></div>
+
+            <div class="relative z-20 text-center px-4">
+              <span class="font-display font-black text-lg sm:text-xl text-zinc-100 group-hover:text-red-400 transition-colors uppercase tracking-wider block drop-shadow-md">
+                ${game.title}
+              </span>
+              <span class="font-mono text-[11px] text-zinc-400 tracking-widest block mt-1">
+                ${game.genre} &bull; ${game.platform}
+              </span>
+            </div>
+
+            <!-- Badges -->
+            <div class="absolute top-3 left-3 z-20 flex gap-1.5 flex-wrap">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded border uppercase font-bold tracking-wider ${game.badgeColor}">
+                ${game.badge}
+              </span>
+              ${game.isBrowser ? `<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/90 text-emerald-300 border border-emerald-600 font-bold">Browser Ready</span>` : ''}
+            </div>
+
+            <div class="absolute top-3 right-3 z-20">
+              <span class="text-xs font-mono font-black px-2 py-0.5 rounded ${game.isPaid ? 'bg-red-900/90 text-red-200 border border-red-700' : 'bg-zinc-800 text-zinc-300'}">
+                ${game.price}
+              </span>
+            </div>
+          </div>
+
+          <!-- Body details -->
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <p class="text-xs font-semibold text-red-400 italic mb-2">"${game.tagline}"</p>
+              <p class="text-xs text-zinc-400 leading-relaxed">${game.description}</p>
+            </div>
+
+            <div class="pt-3 border-t border-zinc-800/80 flex items-center justify-between gap-3">
+              <span class="text-[11px] font-mono text-zinc-500">${game.platform}</span>
+              <a href="${game.url}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-red-900/50 hover:bg-red-800 text-red-200 hover:text-white rounded-lg border border-red-700/60 text-xs font-mono font-bold tracking-wider transition-all">
+                <span>itch.io</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+        </article>
+      `).join('');
+
+      // Refresh feather / lucide icons inside generated DOM
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
+
+    // Filter by Genre / Category
+    function setFilter(genre, btnElement) {
+      currentGenreFilter = genre;
+      document.querySelectorAll('.genre-btn').forEach(btn => {
+        btn.classList.remove('bg-red-700', 'text-white', 'active');
+        btn.classList.add('bg-surface', 'text-gray-300', 'border-red-950');
+      });
+      if (btnElement) {
+        btnElement.classList.add('bg-red-700', 'text-white', 'active');
+        btnElement.classList.remove('bg-surface', 'text-gray-300', 'border-red-950');
+      }
+      renderGames();
+      playHorrorBlip();
+    }
+
+    function filterGames() {
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (searchInput && clearBtn) {
+        if (searchInput.value.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+      renderGames();
+    }
+
+    function clearSearch() {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.value = '';
+        filterGames();
+      }
+    }
+
+    function resetFilters() {
+      currentGenreFilter = 'all';
+      const firstBtn = document.querySelector('.genre-btn');
+      if (firstBtn) {
+        setFilter('all', firstBtn);
+      }
+      clearSearch();
+    }
+
+    // Mobile Navigation Drawer Toggle
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileMenu');
+      if (nav) {
+        nav.classList.toggle('hidden');
+      }
+    }
+
+    // Modal Controllers
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // Cookie acknowledgement
+    function dismissCookie() {
+      const notice = document.getElementById('cookieNotice') || document.getElementById('cookieBanner');
+      if (notice) {
+        notice.classList.add('hidden');
+      }
+      try {
+        localStorage.setItem('dls_cookies_accepted', 'true');
+      } catch (e) {}
+    }
+
+    // Contact submission handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.innerHTML = '<span class="text-white font-mono">DISPATCH TRANSMITTED ✓</span>';
+        submitBtn.disabled = true;
+      }
+      setTimeout(() => {
+        form.reset();
+        if (submitBtn) {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      }, 3000);
+    }
+
+    // Tab Navigation & Hash Routing System
+    const VALID_PAGES = ['home', 'games', 'news', 'about', 'contact'];
+
+    function navigateTo(pageId, updateHash = true) {
+      if (!VALID_PAGES.includes(pageId)) {
+        pageId = 'home';
+      }
+
+      // Hide all pages
+      document.querySelectorAll('.page-view').forEach(page => {
+        page.classList.add('hidden');
+      });
+
+      // Show selected page
+      const targetPage = document.getElementById(`page-${pageId}`);
+      if (targetPage) {
+        targetPage.classList.remove('hidden');
+      }
+
+      // Update active state in desktop header tabs
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        if (tab.getAttribute('data-tab') === pageId) {
+          tab.classList.remove('text-gray-300', 'hover:bg-surface', 'border-transparent');
+          tab.classList.add('text-rose-400', 'bg-red-950/60', 'border-red-800/60');
+        } else {
+          tab.classList.remove('text-rose-400', 'bg-red-950/60', 'border-red-800/60');
+          tab.classList.add('text-gray-300', 'hover:bg-surface', 'border-transparent');
+        }
+      });
+
+      // Update URL hash
+      if (updateHash) {
+        window.location.hash = pageId;
+      }
+
+      // Scroll to top of content
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Trigger audio blip if sound is enabled
+      playHorrorBlip();
+
+      // Refresh lucide icons
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
+
+    // Handle Browser Back / Forward hash navigation
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (VALID_PAGES.includes(hash)) {
+        navigateTo(hash, false);
+      } else {
+        navigateTo('home', false);
+      }
+    });
+
+    // Lifecycle initialization
+    window.onload = function() {
+      // Check current hash on initial load
+      const initialHash = window.location.hash.replace('#', '');
+      if (VALID_PAGES.includes(initialHash)) {
+        navigateTo(initialHash, false);
+      } else {
+        navigateTo('home', false);
+      }
+
+      renderGames();
+      
+      const yearEl = document.getElementById('year') || document.getElementById('yearSpan');
+      if (yearEl) {
+        yearEl.innerText = new Date().getFullYear();
+      }
+
+      // Check cookie preference
+      try {
+        if (localStorage.getItem('dls_cookies_accepted') === 'true') {
+          dismissCookie();
+        }
+      } catch (e) {}
+
+      // Close modals on background backdrop click
+      ['privacyModal', 'termsModal', 'supportModal'].forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              closeModal(modalId);
+            }
+          });
+        }
+      });
+
+      // Initialize icons
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    };
+  </script>
+</body>
+</html>
