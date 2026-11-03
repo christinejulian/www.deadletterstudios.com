@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090c">
+  <meta name="description" content="Discover independent horror games by Dead Letter Studios, a solo indie game developer. Explore The Last Birthday (1983), Hachishakusama, Slenderman: Eight Pages, and more on itch.io.">
+  <meta name="author" content="Dead Letter Studios">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dead Letter Studios | Indie Horror Games">
+  <meta property="og:description" content="Atmospheric indie horror games by a solo developer. Explore the catalog and watch the latest trailer.">
+  <meta property="og:url" content="https://deadletterstudios.itch.io/">
+  <title>Dead Letter Studios | Indie Horror Games</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #09090c;
+      --panel: #111117;
+      --panel-raised: #17171f;
+      --line: #292932;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --faint: #71717a;
+      --red: #dc2626;
+      --red-light: #f87171;
+      --red-dark: #450a0a;
+      --max-width: 1160px;
+      --radius: 18px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(ellipse at 50% -15%, rgba(127, 29, 29, .2), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid #f87171;
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 12px;
+      left: 12px;
+      padding: 10px 14px;
+      transform: translateY(-160%);
+      border-radius: 8px;
+      background: #fff;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .wrap {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .announcement {
+      padding: 7px 16px;
+      border-bottom: 1px solid rgba(220, 38, 38, .25);
+      background: #171114;
+      color: #d4d4d8;
+      text-align: center;
+      font-size: .78rem;
+    }
+
+    .announcement strong {
+      color: #fecaca;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(63, 63, 70, .7);
+      background: rgba(9, 9, 12, .92);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #7f1d1d;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #450a0a, #171114);
+      color: #fca5a5;
+      font-size: 1.3rem;
+    }
+
+    .brand-name {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: .98rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: -3px;
+      color: var(--faint);
+      font-size: .64rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-link {
+      padding: 9px 12px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      color: #d4d4d8;
+      font-size: .88rem;
+      text-decoration: none;
+      transition: background .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link[aria-current="page"] {
+      border-color: rgba(127, 29, 29, .7);
+      background: rgba(127, 29, 29, .25);
+      color: #fecaca;
+    }
+
+    .button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 17px;
+      border: 1px solid #991b1b;
+      border-radius: 10px;
+      background: #991b1b;
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 750;
+      text-align: center;
+      text-decoration: none;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: #ef4444;
+      background: #b91c1c;
+    }
+
+    .button.secondary {
+      border-color: #3f3f46;
+      background: #18181b;
+      color: #e4e4e7;
+    }
+
+    .button.secondary:hover {
+      border-color: #71717a;
+      background: #27272a;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.25rem;
+    }
+
+    .mobile-nav {
+      display: none;
+      padding: 8px 20px 20px;
+      border-top: 1px solid var(--line);
+      background: #101015;
+    }
+
+    .mobile-nav.open {
+      display: grid;
+      gap: 5px;
+    }
+
+    .mobile-nav .nav-link {
+      padding: 12px;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .page[hidden] {
+      display: none !important;
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      place-items: center;
+      padding: 86px 0 70px;
+      border-bottom: 1px solid rgba(63, 63, 70, .6);
+      text-align: center;
+    }
+
+    .hero-inner {
+      width: min(850px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 6px 11px;
+      border: 1px solid rgba(153, 27, 27, .7);
+      border-radius: 999px;
+      background: rgba(69, 10, 10, .45);
+      color: #fecaca;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f87171;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    .display {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .hero h1 {
+      margin-bottom: 20px;
+      font-size: clamp(2.6rem, 8vw, 5.7rem);
+      line-height: 1.04;
+      letter-spacing: -.035em;
+    }
+
+    .accent {
+      color: #f87171;
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin: 0 auto 28px;
+      color: #b4b4be;
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid rgba(63, 63, 70, .45);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .section-heading .label {
+      margin-bottom: 8px;
+      color: #f87171;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .featured {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: stretch;
+      padding: 24px;
+      border: 1px solid #3f1b20;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(69, 10, 10, .2), var(--panel) 55%);
+    }
+
+    .artwork {
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid #4c1d24;
+      border-radius: 13px;
+      background:
+        radial-gradient(ellipse at 50% 70%, rgba(185, 28, 28, .34), transparent 46%),
+        linear-gradient(145deg, #1a1115, #08080b 70%);
+      text-align: center;
+    }
+
+    .artwork small {
+      display: block;
+      margin-bottom: 12px;
+      color: #f87171;
+      font-family: monospace;
+      letter-spacing: .18em;
+    }
+
+    .artwork strong {
+      display: block;
+      max-width: 550px;
+      color: #fee2e2;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      text-shadow: 0 4px 26px rgba(220, 38, 38, .35);
+    }
+
+    .feature-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .feature-copy h3 {
+      margin-bottom: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.7rem;
+    }
+
+    .feature-copy p {
+      color: var(--muted);
+    }
+
+    .feature-copy .button-row {
+      justify-content: flex-start;
+      margin-top: 12px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .game-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 290px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--panel);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-3px);
+      border-color: #7f1d1d;
+    }
+
+    .game-art {
+      min-height: 130px;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      border-bottom: 1px solid #382126;
+      background:
+        radial-gradient(ellipse at 80% 10%, rgba(220, 38, 38, .27), transparent 45%),
+        linear-gradient(135deg, #21151a, #0d0d12);
+    }
+
+    .game-art span {
+      color: #fee2e2;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.32rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .game-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 19px;
+    }
+
+    .game-card-content p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .game-card-content .button {
+      margin-top: auto;
+    }
+
+    .search-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .search-box {
+      width: min(100%, 380px);
+      min-height: 45px;
+      padding: 10px 13px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #111117;
+      color: var(--text);
+    }
+
+    .search-box::placeholder {
+      color: var(--faint);
+    }
+
+    .filter-note {
+      color: var(--faint);
+      font-size: .85rem;
+    }
+
+    .no-results {
+      padding: 30px;
+      border: 1px dashed #52525b;
+      border-radius: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .news-card,
+    .content-card {
+      padding: clamp(22px, 4vw, 38px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .news-meta {
+      margin-bottom: 12px;
+      color: #fca5a5;
+      font-family: monospace;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .news-card h2 {
+      max-width: 780px;
+      margin-bottom: 12px;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1.2;
+    }
+
+    .news-card > p,
+    .content-card > p,
+    .content-card li {
+      color: var(--muted);
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      margin: 24px 0;
+      border: 1px solid #7f1d1d;
+      border-radius: 14px;
+      background:
+        radial-gradient(ellipse at center, rgba(127, 29, 29, .3), transparent 60%),
+        #050507;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-placeholder {
+      max-width: 460px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .video-placeholder p {
+      margin: 0 0 16px;
+      color: #d4d4d8;
+    }
+
+    .video-placeholder button {
+      cursor: pointer;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .info-box {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #0c0c11;
+    }
+
+    .info-box h3 {
+      margin-bottom: 7px;
+      color: #fecaca;
+      font-size: .95rem;
+    }
+
+    .info-box p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .contact-callout {
+      margin-top: 22px;
+      padding: 20px;
+      border: 1px solid #4c1d24;
+      border-radius: 12px;
+      background: rgba(69, 10, 10, .2);
+    }
+
+    .contact-callout p {
+      margin-bottom: 14px;
+      color: #d4d4d8;
+    }
+
+    .site-footer {
+      padding: 35px 0 22px;
+      border-top: 1px solid var(--line);
+      background: #060608;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 24px;
+    }
+
+    .footer-brand {
+      max-width: 430px;
+    }
+
+    .footer-brand strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #f4f4f5;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: .08em;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: #d4d4d8;
+      text-decoration-color: #52525b;
+      text-underline-offset: 3px;
+    }
+
+    .footer-links a:hover {
+      color: #fecaca;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(63, 63, 70, .6);
+      color: var(--faint);
+      font-size: .78rem;
+    }
+
+    @media (max-width: 900px) {
+      .desktop-nav,
+      .header-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .featured {
+        grid-template-columns: 1fr;
+      }
+
+      .game-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .wrap {
+        width: min(100% - 30px, var(--max-width));
+      }
+
+      .announcement {
+        font-size: .7rem;
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .brand-name {
+        font-size: .86rem;
+      }
+
+      .brand-subtitle {
+        font-size: .58rem;
+      }
+
+      .hero {
+        min-height: 520px;
+        padding: 70px 0 54px;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .game-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .artwork {
+        min-height: 235px;
+      }
+
+      .button-row .button {
+        width: 100%;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dead Letter Studios",
+    "url": "https://deadletterstudios.itch.io/",
+    "description": "Independent horror game developer creating and publishing games on itch.io.",
+    "sameAs": [
+      "https://deadletterstudios.itch.io/"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="announcement" role="status">
+    <strong>New trailer:</strong> The Last Birthday II: The Things We Buried
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand route-link" href="#home" aria-label="Dead Letter Studios home">
+        <span class="brand-mark" aria-hidden="true">✉</span>
+        <span>
+          <span class="brand-name">DEAD LETTER</span>
+          <span class="brand-subtitle">Solo Indie Horror Studio</span>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a class="nav-link route-link" href="#home">Home</a>
+        <a class="nav-link route-link" href="#games">Games</a>
+        <a class="nav-link route-link" href="#news">News &amp; Trailer</a>
+        <a class="nav-link route-link" href="#about">About</a>
+        <a class="nav-link route-link" href="#contact">Contact</a>
+      </nav>
+
+      <a class="button header-cta"
+         href="https://deadletterstudios.itch.io/"
+         target="_blank" rel="noopener noreferrer">
+        Visit itch.io <span aria-hidden="true">↗</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button"
+              aria-expanded="false" aria-controls="mobileNav"
+              aria-label="Open navigation menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a class="nav-link route-link" href="#home">Home</a>
+      <a class="nav-link route-link" href="#games">Games</a>
+      <a class="nav-link route-link" href="#news">News &amp; Trailer</a>
+      <a class="nav-link route-link" href="#about">About</a>
+      <a class="nav-link route-link" href="#contact">Contact</a>
+      <a class="button" href="https://deadletterstudios.itch.io/"
+         target="_blank" rel="noopener noreferrer">Visit itch.io ↗</a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <!-- HOME -->
+    <section class="page" id="page-home" data-page="home">
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Solo independent game developer</div>
+          <h1>Unrefined <span class="accent">terror.</span><br>Retro nightmares.</h1>
+          <p class="hero-copy">
+            Dead Letter Studios creates indie horror games for players who love
+            unsettling stories, eerie atmospheres, and the strange things that
+            wait just beyond the light.
+          </p>
+          <div class="button-row">
+            <a class="button route-link" href="#games">Explore the games</a>
+            <a class="button secondary route-link" href="#news">Watch the trailer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="wrap">
+          <div class="section-heading">
+            <div class="label">Featured game</div>
+            <h2>The Last Birthday (1983)</h2>
+            <p>Step into the world of the flagship horror title from Dead Letter Studios.</p>
+          </div>
+
+          <article class="featured">
+            <div class="artwork" aria-label="The Last Birthday game title artwork">
+              <div>
+                <small>[ PORT HALLOWAY — 1983 ]</small>
+                <strong>THE LAST<br>BIRTHDAY</strong>
+              </div>
+            </div>
+            <div class="feature-copy">
+              <div class="eyebrow">Survival horror</div>
+              <h3>Some birthdays should never be remembered.</h3>
+              <p>
+                Explore the game page for details, screenshots, system
+                requirements, and availability. Game information and purchasing
+                are handled on the official itch.io page.
+              </p>
+              <div class="button-row">
+                <a class="button" href="https://deadletterstudios.itch.io/the-last-birthday-1983"
+                   target="_blank" rel="noopener noreferrer">
+                  View on itch.io <span aria-hidden="true">↗</span>
+                </a>
+                <a class="button secondary route-link" href="#news">Latest trailer</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES -->
+    <section class="page" id="page-games" data-page="games" hidden>
+      <div class="section">
+        <div class="wrap">
+          <div class="section-heading">
+            <div class="label">The game library</div>
+            <h1>Games from Dead Letter Studios</h1>
+            <p>
+              Explore selected titles below. Visit the studio catalog on itch.io
+              for the complete and current list of games.
+            </p>
+          </div>
+
+          <div class="search-row">
+            <label>
+              <span class="skip-link">Search games</span>
+              <input class="search-box" id="gameSearch" type="search"
+                     placeholder="Search these games…" autocomplete="off">
+            </label>
+            <span class="filter-note" id="gameCount" aria-live="polite">
+              Showing selected games
+            </span>
+          </div>
+
+          <div class="game-grid" id="gameGrid">
+            <article class="game-card" data-search="the last birthday 1983 survival horror">
+              <div class="game-art"><span>The Last Birthday (1983)</span></div>
+              <div class="game-card-content">
+                <p>Enter the world of the flagship horror game from Dead Letter Studios.</p>
+                <a class="button" href="https://deadletterstudios.itch.io/the-last-birthday-1983"
+                   target="_blank" rel="noopener noreferrer">View game ↗</a>
+              </div>
+            </article>
+
+            <article class="game-card" data-search="slenderman eight pages horror">
+              <div class="game-art"><span>Slenderman: Eight Pages</span></div>
+              <div class="game-card-content">
+                <p>Visit the official game page for information and availability.</p>
+                <a class="button" href="https://deadletterstudios.itch.io/slenderman-eight-pages"
+                   target="_blank" rel="noopener noreferrer">View game ↗</a>
+              </div>
+            </article>
+
+            <article class="game-card" data-search="hachishakusama summer eight feet tall folklore horror">
+              <div class="game-art"><span>Hachishakusama</span></div>
+              <div class="game-card-content">
+                <p>Discover the folklore-inspired horror title on its itch.io page.</p>
+                <a class="button" href="https://deadletterstudios.itch.io/hachishakusama"
+                   target="_blank" rel="noopener noreferrer">View game ↗</a>
+              </div>
+            </article>
+          </div>
+
+          <p class="no-results" id="noGames" hidden>No matching games. Try another search.</p>
+
+          <div class="contact-callout">
+            <p>Looking for another title? Browse the studio’s complete itch.io catalog.</p>
+            <a class="button" href="https://deadletterstudios.itch.io/"
+               target="_blank" rel="noopener noreferrer">Open full itch.io catalog ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="page" id="page-news" data-page="news" hidden>
+      <div class="section">
+        <div class="wrap">
+          <div class="section-heading">
+            <div class="label">Studio transmission</div>
+            <h1>News &amp; Trailer</h1>
+            <p>Watch the announcement trailer for The Last Birthday II: The Things We Buried.</p>
+          </div>
+
+          <article class="news-card">
+            <div class="news-meta">Official announcement trailer</div>
+            <h2>The Last Birthday II: The Things We Buried</h2>
+            <p>
+              Watch the trailer on this page or open it directly on YouTube.
+              The video is loaded only when you choose to play it.
+            </p>
+
+            <div class="video-frame" id="videoFrame">
+              <div class="video-placeholder" id="videoPlaceholder">
+                <p>Load the YouTube video to watch the announcement trailer.</p>
+                <button class="button" id="loadVideo" type="button">
+                  Load and play trailer
+                </button>
+                <p style="margin:14px 0 0">
+                  <a href="https://youtu.be/Q-I7vQcrBMs"
+                     target="_blank" rel="noopener noreferrer">
+                    Open trailer on YouTube ↗
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-box">
+                <h3>About the trailer</h3>
+                <p>Official reveal trailer for the next chapter in The Last Birthday series.</p>
+              </div>
+              <div class="info-box">
+                <h3>More studio updates</h3>
+                <p>Check the studio’s itch.io page for current announcements and game details.</p>
+              </div>
+              <div class="info-box">
+                <h3>Follow the games</h3>
+                <p>Visit itch.io to find the latest releases and follow Dead Letter Studios.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="page" id="page-about" data-page="about" hidden>
+      <div class="section">
+        <div class="wrap">
+          <div class="section-heading">
+            <div class="label">Behind the dread</div>
+            <h1>About Dead Letter Studios</h1>
+            <p>A solo indie developer making horror games for curious players and fans of unsettling experiences.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>One developer. Independent games.</h2>
+            <p>
+              Dead Letter Studios is a solo indie game development project.
+              The studio’s games explore horror through unsettling settings,
+              strange encounters, and stories designed to stay with you.
+            </p>
+            <p>
+              This website is a guide to selected games and studio updates.
+              The itch.io pages are the source for current game descriptions,
+              platform information, pricing, downloads, and availability.
+            </p>
+
+            <div class="info-grid">
+              <div class="info-box">
+                <h3>Independent</h3>
+                <p>Created and published by a solo indie developer.</p>
+              </div>
+              <div class="info-box">
+                <h3>Horror-focused</h3>
+                <p>Games for players looking for atmospheric and unsettling experiences.</p>
+              </div>
+              <div class="info-box">
+                <h3>Find the games</h3>
+                <p>Browse the complete catalog and follow the studio on itch.io.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page" id="page-contact" data-page="contact" hidden>
+      <div class="section">
+        <div class="wrap">
+          <div class="section-heading">
+            <div class="label">Get in touch</div>
+            <h1>Contact &amp; Press</h1>
+            <p>For questions, support, creator inquiries, or other messages, contact Dead Letter Studios through itch.io.</p>
+          </div>
+
+          <div class="content-card">
+            <h2>Contact the developer</h2>
+            <p>
+              This website is a static HTML page and does not send form
+              submissions. Use the official itch.io studio page to find the
+              available contact option and current support information.
+            </p>
+            <div class="contact-callout">
+              <p>
+                For game-specific questions, include the title of the game and
+                any relevant details in your message.
+              </p>
+              <a class="button" href="https://deadletterstudios.itch.io/"
+                 target="_blank" rel="noopener noreferrer">
+                Contact via itch.io ↗
+              </a>
+            </div>
+
+            <h2 style="margin-top:32px">Privacy &amp; external services</h2>
+            <p>
+              This page does not include analytics or advertising scripts.
+              External links open itch.io or YouTube, which have their own
+              privacy policies. The trailer embed loads only after you press
+              the play button.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>DEAD LETTER STUDIOS</strong>
+          <span>Independent horror games by a solo indie developer.</span>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a class="route-link" href="#home">Home</a>
+          <a class="route-link" href="#games">Games</a>
+          <a class="route-link" href="#news">News</a>
+          <a class="route-link" href="#about">About</a>
+          <a class="route-link" href="#contact">Contact</a>
+          <a href="https://deadletterstudios.itch.io/"
+             target="_blank" rel="noopener noreferrer">itch.io ↗</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> Dead Letter Studios</span>
+        <a href="#home" class="route-link">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const validPages = new Set(["home", "games", "news", "about", "contact"]);
+      const pages = Array.from(document.querySelectorAll(".page"));
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileNav = document.getElementById("mobileNav");
+      const main = document.getElementById("main-content");
+
+      function currentPageFromHash() {
+        const requested = window.location.hash.slice(1).toLowerCase();
+        return validPages.has(requested) ? requested : "home";
+      }
+
+      function closeMobileMenu() {
+        if (!menuToggle || !mobileNav) return;
+        mobileNav.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+      }
+
+      function showPage(pageName, moveFocus) {
+        const target = validPages.has(pageName) ? pageName : "home";
+
+        pages.forEach((page) => {
+          page.hidden = page.dataset.page !== target;
+        });
+
+        document.querySelectorAll(".route-link").forEach((link) => {
+          const isCurrent = link.getAttribute("href") === "#" + target;
+          if (link.closest("nav")) {
+            if (isCurrent) {
+              link.setAttribute("aria-current", "page");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          }
+        });
+
+        closeMobileMenu();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        if (moveFocus && main) {
+          window.setTimeout(() => main.focus({ preventScroll: true }), 0);
+        }
+      }
+
+      function navigate(pageName) {
+        const target = validPages.has(pageName) ? pageName : "home";
+
+        if (window.location.hash !== "#" + target) {
+          window.location.hash = target;
+        } else {
+          showPage(target, true);
+        }
+      }
+
+      document.addEventListener("click", (event) => {
+        const link = event.target.closest("a.route-link");
+        if (!link) return;
+
+        const href = link.getAttribute("href") || "";
+        const target = href.startsWith("#") ? href.slice(1) : "";
+
+        if (validPages.has(target)) {
+          event.preventDefault();
+          navigate(target);
+        }
+      });
+
+      window.addEventListener("hashchange", () => {
+        showPage(currentPageFromHash(), true);
+      });
+
+      if (menuToggle && mobileNav) {
+        menuToggle.addEventListener("click", () => {
+          const willOpen = !mobileNav.classList.contains("open");
+          mobileNav.classList.toggle("open", willOpen);
+          document.body.classList.toggle("menu-open", willOpen);
+          menuToggle.setAttribute("aria-expanded", String(willOpen));
+          menuToggle.setAttribute(
+            "aria-label",
+            willOpen ? "Close navigation menu" : "Open navigation menu"
+          );
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeMobileMenu();
+        });
+      }
+
+      const search = document.getElementById("gameSearch");
+      const gameCards = Array.from(document.querySelectorAll(".game-card"));
+      const gameCount = document.getElementById("gameCount");
+      const noGames = document.getElementById("noGames");
+
+      function filterGames() {
+        if (!search) return;
+        const query = search.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        gameCards.forEach((card) => {
+          const text = (card.dataset.search || card.textContent).toLowerCase();
+          const isVisible = text.includes(query);
+          card.hidden = !isVisible;
+          if (isVisible) visibleCount += 1;
+        });
+
+        if (gameCount) {
+          gameCount.textContent = `Showing ${visibleCount} of ${gameCards.length} selected games`;
+        }
+        if (noGames) noGames.hidden = visibleCount !== 0;
+      }
+
+      if (search) search.addEventListener("input", filterGames);
+
+      const loadVideoButton = document.getElementById("loadVideo");
+      const videoFrame = document.getElementById("videoFrame");
+      const videoPlaceholder = document.getElementById("videoPlaceholder");
+
+      if (loadVideoButton && videoFrame && videoPlaceholder) {
+        loadVideoButton.addEventListener("click", () => {
+          const iframe = document.createElement("iframe");
+          iframe.src = "https://www.youtube-nocookie.com/embed/Q-I7vQcrBMs?autoplay=1";
+          iframe.title = "The Last Birthday II: The Things We Buried — Official Announcement Trailer";
+          iframe.loading = "lazy";
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          videoPlaceholder.replaceWith(iframe);
+        });
+      }
+
+      const year = document.getElementById("currentYear");
+      if (year) year.textContent = String(new Date().getFullYear());
+
+      showPage(currentPageFromHash(), false);
+    })();
+  </script>
+</body>
+</html>
